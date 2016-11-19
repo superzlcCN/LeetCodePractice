@@ -1,8 +1,0 @@
-#ingore these files
-
-*.class
-bin/*
-.DS_Store
-.classpath
-.project
-.settings/*
