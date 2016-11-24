@@ -1,13 +1,4 @@
-import java.lang.reflect.Array;
-import java.nio.charset.CharsetDecoder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Base64.Decoder;
 
-import javax.naming.spi.DirStateFactory.Result;
 
 /**
  * A message containing letters from A-Z is being encoded to numbers using the following mapping:
