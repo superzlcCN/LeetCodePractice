@@ -1,30 +1,41 @@
 
+import java.util.LinkedList;
+
 public class _101_SymmetricTree {
 	public boolean isSymmetric(TreeNode root) {
 		
-        if ( root == null || 
-        	(root.left == null && root.right!= null) || 
-        	(root.left!=null && root.right == null) ||
-        	(root.left.val != root.right.val)) {
-			return false;
-		}
-        if ((root.left == null && root.right == null) || (root.left.val == root.right.val)) {
+		 LinkedList<TreeNode> list = new LinkedList<TreeNode>();
+		 
+		 if (root == null) {
 			return true;
-		}
-        return twoNodeCompare(root.left.left, root.right.right) && twoNodeCompare(root.left.right, root.right.left);
+		 }
+		 list.add(root.left);
+		 list.add(root.right);
+		 while(list.size() > 1){
+			TreeNode left = list.poll();
+			TreeNode right = list.poll();
+			 
+			if(left==null && right == null)
+				 continue;
+			if (left == null ^ right == null) {
+				return false;
+			}
+			
+			if (left.val != right.val) {
+				return false;
+			}
+			
+			list.add(left.left);
+			list.add(right.right);
+			list.add(left.right);
+			list.add(right.left);
+			
+			
+		 }
+		
+		 return true;
        
     }
 	
-	private boolean twoNodeCompare(TreeNode node1, TreeNode node2){
-		if (node1 == null && node2 == null) {
-			return true;
-		}
-		if ((node1 == null && node2 != null) || 
-			(node1 != null && node2 == null) ||
-			(node1.val != node2.val)) {
-			return false;
-		}
-		
-		return twoNodeCompare(node1.left, node2.right) && twoNodeCompare(node1.left, node2.right);
-	}
+	
 }
